@@ -1,23 +1,31 @@
 #!/bin/bash
-# d2_inventory_screenshots_to_html.sh version 0.03
+# d2_inventory_screenshots_to_html.sh version 0.04
+# show off your character's inventory TODAY!
+#
+# <WINDOWS>
+# if you install Cygwin and select to install the perl5, bc, ImageMagick packages
+#   during the Cygwin installation..
+# I'm 17-41%sure this script would work.
+# 0.000% tested
 #
 # <WARNING>
 # read this whole comment section before running this script.
 #
 # <BUG>
-# using screenshots of showing the item stats of your secondary weapons might make
-#   the program/script buggy.
+# using screenshots of showing the item stats of switching to your alternate weapons might
+#   make the program/script weird or make the clipped images bigger than they have to be.
 #
 # <NOTICE>
-# I haven't ran this script in over 4 years and I only ran it once.
+# I haven't ran this script in over 4 years and I only ran it once on Debian (maybe Ubuntu) Linux.
 # But it was super successful. So god-speed.
 #
 # <NOTICE2>
 # this script uses `perl`, `awk`, `sed`, `paste`, `bc` which is typically included
 #   with all linux distributions. so you're good.
 #
-# THIS DOES 0 work with Diablo II: Resurrected. This is
-#   vanilla/classic/non-resurrected/LoD/whatever Diablo II only.
+# THIS DOES 0 work with Diablo II: Resurrected (because it assumes a 800x600 resolution screenshot
+#   pretty sure). This is vanilla/classic/non-resurrected/LoD/whatever Diablo II only.
+#   it should work with any mod as well except for changes in resolution.
 #
 # <POSSIBLE PROBLEM>
 # if the mouseover in the HTML offset is a little off try setting the web page's HTML-CSS
@@ -51,12 +59,23 @@
 #   to C:\Program Files (x86)\Diablo II\
 #   (or rather ~/.wine/drive_c/Program\ Files\ \(x86\)/Diablo II)
 #   naturally. It's a game feature.
+# Actually in Windows 8 I think the Screenshots are put into a hidden AppData folder
+#   in your user directory. I hope nobody's using Windows 8 because of that.
 #
-# what you need to do before running this script:
+# what you need to do before running this script on linux:
 # mkdir ~/a-place-for-the-script-to-do-its-magic-and-put-its-output
 # cd ~/a-place-for-the-script-to-do-its-magic-and-put-its-output
-# cp ~/Downloads/d2_inventory_screenshots_to_html-2022.sh .
+# cp ~/Downloads/d2_inventory_screenshots_to_html-2022.sh . #that is, this script
 # D2_SCREENSHOTS_PATH="$HOME/.wine/drive_c/Program\ Files\ \(x86\)/Diablo II"
+# mkdir raw-screens
+# mv "$D2_SCREENSHOTS_PATH/ScreenshotTheOneThatHas0CursorSelection.jpg" emptied.jpg
+# mv "$D2_SCREENSHOTS_PATH"/*.jpg raw-screens/
+#
+# what you need to do before running this script on windows with a cygwin terminal:
+# mkdir ~/a-place-for-the-script-to-do-its-magic-and-put-its-output
+# cd ~/a-place-for-the-script-to-do-its-magic-and-put-its-output
+# cp /cygdrive/c/Users/YOURUSERNAME/Downloads/d2_inventory_screenshots_to_html-2022.sh . #that is, this script
+# D2_SCREENSHOTS_PATH="/cygdrive/c/Program\ Files\ \(x86\)/Diablo II"
 # mkdir raw-screens
 # mv "$D2_SCREENSHOTS_PATH/ScreenshotTheOneThatHas0CursorSelection.jpg" emptied.jpg
 # mv "$D2_SCREENSHOTS_PATH"/*.jpg raw-screens/
@@ -174,7 +193,7 @@ sed -si '/^#/d;s/#.*//;s/[,:()]/ /g;s/...$//;s/  */ /g;s/^[0-9]\+ [0-9]\+ //' *.
 
 n=0
 images_to_crop=../raw-screens/*.jpg
-echo "<!-- Created by d2_inventory_screenshots_to_html.sh version 0.03  --><script>
+echo "<!-- Created by d2_inventory_screenshots_to_html.sh version 0.04  --><script>
 function change_css(classname,element,value) 
 {
   var cssRules;
