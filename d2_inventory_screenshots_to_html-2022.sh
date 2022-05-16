@@ -26,6 +26,8 @@
 # THIS DOES 0 work with Diablo II: Resurrected (because it assumes a 800x600 resolution screenshot
 #   pretty sure). This is vanilla/classic/non-resurrected/LoD/whatever Diablo II only.
 #   it should work with any mod as well except for changes in resolution.
+# Although I wonder if it could work with Diablo II: Resurrected if you set its resolution to
+#   800x600 windowed.
 #
 # <POSSIBLE PROBLEM>
 # if the mouseover in the HTML offset is a little off try setting the web page's HTML-CSS
