@@ -1,0 +1,47 @@
+<!-- Created by d2_inventory_screenshots_to_html.sh version whatever  --><script>
+function change_css(classname,element,value)
+{
+  var cssRules;
+  var added = false;
+  for (var S = 0; S < document.styleSheets.length; S++){
+    if (document.styleSheets[S]['rules']) {
+      cssRules = 'rules';
+    } else if (document.styleSheets[S]['cssRules']) {
+      cssRules = 'cssRules';
+    } else {
+      return;
+    }
+
+    for (var R = 0; R < document.styleSheets[S][cssRules].length; R++)
+    {
+      if (document.styleSheets[S][cssRules][R].selectorText == classname) {
+        if(document.styleSheets[S][cssRules][R].style[element]){
+          document.styleSheets[S][cssRules][R].style[element] = value;
+          added=true;
+          break;
+        }
+      }
+    }
+    if(!added)
+    {
+      try{
+        document.styleSheets[S].insertRule(classname+' { '+element+': '+value+'; }',document.styleSheets[S][cssRules].length);
+      } catch(err){
+        try{document.styleSheets[S].addRule(classname,element+': '+value+';');}catch(err){}
+      }
+    }
+  }
+}
+</script>
+<style>
+.redrect{background-color:rgba(255, 0, 0, 0.3)}
+</style>
+<div style="position:relative">
+<img src="d2inv_images/cropped_1.jpg" id="crop1" style="position:absolute;left:527px;top:175px;display:none"><div class="redrect" style="position:absolute;width:37px;height:30px;left:663px;top:221px" onmouseover="document.getElementById('crop1').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')" onmouseout="document.getElementById('crop1').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')"></div>
+<img src="d2inv_images/cropped_2.jpg" id="crop2" style="position:absolute;left:575px;top:15px;display:none"><div class="redrect" style="position:absolute;width:37px;height:30px;left:664px;top:94px" onmouseover="document.getElementById('crop2').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')" onmouseout="document.getElementById('crop2').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')"></div>
+<img src="d2inv_images/cropped_3.jpg" id="crop3" style="position:absolute;left:479px;top:175px;display:none"><div class="redrect" style="position:absolute;width:37px;height:30px;left:545px;top:202px" onmouseover="document.getElementById('crop3').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')" onmouseout="document.getElementById('crop3').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')"></div>
+<img src="d2inv_images/cropped_4.jpg" id="crop4" style="position:absolute;left:463px;top:47px;display:none"><div class="redrect" style="position:absolute;width:37px;height:30px;left:545px;top:111px" onmouseover="document.getElementById('crop4').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')" onmouseout="document.getElementById('crop4').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')"></div>
+<img src="d2inv_images/cropped_5.jpg" id="crop5" style="position:absolute;left:415px;top:63px;display:none"><div class="redrect" style="position:absolute;width:37px;height:30px;left:540px;top:153px" onmouseover="document.getElementById('crop5').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')" onmouseout="document.getElementById('crop5').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')"></div>
+<img src="d2inv_images/cropped_6.jpg" id="crop6" style="position:absolute;left:319px;top:31px;display:none"><div class="redrect" style="position:absolute;width:37px;height:30px;left:431px;top:88px" onmouseover="document.getElementById('crop6').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')" onmouseout="document.getElementById('crop6').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')"></div>
+<img src="d2inv_images/cropped_7.jpg" id="crop7" style="position:absolute;left:351px;top:191px;display:none"><div class="redrect" style="position:absolute;width:37px;height:30px;left:431px;top:223px" onmouseover="document.getElementById('crop7').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')" onmouseout="document.getElementById('crop7').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')"></div>
+<img src="d2inv_images/empty.jpg" width="800" height="600" usemap="#d2char" style="border-style:none"></div>
