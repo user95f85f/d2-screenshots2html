@@ -202,10 +202,8 @@ mouse_over_width=37
 mouse_over_height=30
 cursor_location_x=`echo "$cursor_loc_and_crop_rect" | awk '{print $1}'`
 cursor_location_y=`echo "$cursor_loc_and_crop_rect" | awk '{print $2}'`
-# the reason for the perl at the end is because my Cygwin uses a GnuWin32 installed bc.exe @ %PATH% and it appends a windows newline at the
-#   end of its execution.
-rect_location_x=`echo $cursor_location_x - $mouse_over_width / 2 | bc | perl -ne 'BEGIN{undef $/;};s/[\r\n]//gs;print'`
-rect_location_y=`echo $cursor_location_y - $mouse_over_height / 2 | bc | perl -ne 'BEGIN{undef $/;};s/[\r\n]//gs;print'`
+rect_location_x="$(( $cursor_location_x - $mouse_over_width / 2 ))"
+rect_location_y="$(( $cursor_location_y - $mouse_over_height / 2 ))"
 echo "<img src=\"d2inv_images/cropped_$n.jpg\" id=\"crop$n\" style=\"position:absolute;left:${crop_x}px;top:${crop_y}px;display:none\"><div class=\"redrect\" style=\"position:absolute;width:${mouse_over_width}px;height:${mouse_over_height}px;left:${rect_location_x}px;top:${rect_location_y}px\" onmouseover=\"document.getElementById('crop$n').style.display='block';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0)')\" onmouseout=\"document.getElementById('crop$n').style.display='none';change_css('.redrect', 'background-color', 'rgba(255, 0, 0, 0.3)')\"></div>" >> index.html
 done
 
